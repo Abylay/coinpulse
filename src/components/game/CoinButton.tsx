@@ -2,24 +2,34 @@ import { motion } from "framer-motion";
 
 export function CoinButton() {
   return (
-    <div className="flex flex-1 items-center justify-center">
+    <div className="relative flex flex-1 items-center justify-center">
+      <div
+        className="
+          absolute
+          h-72
+          w-72
+          rounded-full
+          bg-yellow-400/20
+          blur-3xl
+        "
+      />
       <motion.button
-        whileTap={{
-          scale: 0.92,
-        }}
-        whileHover={{
-          scale: 1.03,
+        animate={{
+          y: [0, -8, 0],
         }}
         transition={{
-          type: "spring",
-          stiffness: 300,
-          damping: 15,
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        whileTap={{
+          scale: 0.92,
         }}
         className="
           relative
           flex
-          h-56
-          w-56
+          h-64
+          w-64
           items-center
           justify-center
           rounded-full
@@ -27,19 +37,30 @@ export function CoinButton() {
           from-yellow-300
           via-yellow-400
           to-orange-500
-          shadow-[0_0_80px_rgba(250,204,21,0.45)]
+          shadow-[0_0_120px_rgba(250,204,21,0.45)]
         "
       >
         <div
           className="
-          absolute
-          inset-3
-          rounded-full
-          border
-          border-white/30
-        "
+            absolute
+            inset-3
+            rounded-full
+            border
+            border-white/30
+          "
         />
-        <span className="text-7xl">🪙</span>
+
+        <div
+          className="
+            absolute
+            inset-6
+            rounded-full
+            border
+            border-yellow-100/30
+          "
+        />
+
+        <span className="text-8xl">🪙</span>
       </motion.button>
     </div>
   );
