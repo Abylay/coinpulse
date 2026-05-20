@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
+import { useGameStore } from "@/store/gameStore";
 
 export function CoinButton() {
+  const tapCoin = useGameStore((state) => state.tapCoin);
   return (
     <div className="relative flex flex-1 items-center justify-center">
       <div
@@ -14,6 +16,7 @@ export function CoinButton() {
         "
       />
       <motion.button
+        onClick={tapCoin}
         animate={{
           y: [0, -8, 0],
         }}
