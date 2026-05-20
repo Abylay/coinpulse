@@ -1,7 +1,12 @@
+import { AppLayout } from "@/components/layout/AppLayout";
+import { CoinButton } from "@/components/game/CoinButton";
+import { GameHeader } from "@/components/game/GameHeader";
+
 export default function App() {
   return (
-    <div className={`flex min-h-screen items-center justify-center`}>
-      <h1 className={`text-5xl font-bold`}>🪙 CoinPulse</h1>
-    </div>
+    <AppLayout>
+      <GameHeader />
+      <CoinButton />
+    </AppLayout>
   );
 }
