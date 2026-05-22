@@ -1,7 +1,36 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import type { MouseEvent } from "react";
+import { FloatingText } from "@/components/game/FloatingText";
+import type { FloatingTextItem } from "@/types/floatingText";
 import { useGameStore } from "@/store/gameStore";
+import { motion } from "framer-motion";
 
 export function CoinButton() {
+  const [floatingTexts, setFloatingTexts] = useState<FloatingTextItem[]>([]);
+
+  function handleClick(event: MouseEvent<HTMLButtonElement>) {
+    tapCoin();
+
+    const id = crypto.randomUUID();
+
+    const rect = event.currentTarget.getBoundingClientRect();
+
+    const x = event.clientX - rect.left;
+
+    const y = event.clientY - rect.top;
+
+    setFloatingTexts((prev) => [
+      ...prev,
+      {
+        id,
+        x,
+        y,
+      },
+    ]);
+    setTimeout(() => {
+      setFloatingTexts((prev) => prev.filter((text) => text.id !== id));
+    }, 800);
+  }
   const tapCoin = useGameStore((state) => state.tapCoin);
   return (
     <div className="relative flex flex-1 items-center justify-center">
@@ -16,7 +45,7 @@ export function CoinButton() {
         "
       />
       <motion.button
-        onClick={tapCoin}
+        onClick={handleClick}
         animate={{
           y: [0, -8, 0],
         }}
@@ -64,6 +93,12 @@ export function CoinButton() {
         />
 
         <span className="text-8xl">🪙</span>
+
+        <div>
+          {floatingTexts.map((text) => (
+            <FloatingText key={text.id} x={text.x} y={text.y} />
+          ))}
+        </div>
       </motion.button>
     </div>
   );

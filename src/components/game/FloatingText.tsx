@@ -1,23 +1,36 @@
 import { motion } from "framer-motion";
 
-export function FloatingText() {
+interface FloatingTextProps {
+  x: number;
+
+  y: number;
+}
+
+export function FloatingText({ x, y }: FloatingTextProps) {
   return (
     <motion.div
       initial={{
         opacity: 1,
         y: 0,
+        scale: 1,
       }}
       animate={{
         opacity: 0,
-        y: -60,
+        y: -80,
+        scale: 1.4,
       }}
       transition={{
         duration: 0.8,
       }}
+      style={{
+        left: x,
+        top: y,
+      }}
       className="
         pointer-events-none
         absolute
-        text-3xl
+        z-50
+        text-4xl
         font-bold
         text-yellow-300
       "
