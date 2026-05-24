@@ -48,6 +48,11 @@ export function CoinButton() {
         onClick={handleClick}
         animate={{
           y: [0, -8, 0],
+          boxShadow: [
+            "0 0 80px rgba(250,204,21,0.35)",
+            "0 0 140px rgba(250,204,21,0.6)",
+            "0 0 80px rgba(250,204,21,0.35)",
+          ],
         }}
         transition={{
           duration: 3,
@@ -55,7 +60,8 @@ export function CoinButton() {
           ease: "easeInOut",
         }}
         whileTap={{
-          scale: 0.92,
+          scale: 0.88,
+          rotate: -6,
         }}
         className="
           relative

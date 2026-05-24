@@ -9,6 +9,8 @@ export function GameStats() {
 
   const level = useGameStore((state) => state.level);
 
+  const combo = useGameStore((state) => state.combo);
+
   const stats = [
     {
       label: "Coins",
@@ -23,6 +25,11 @@ export function GameStats() {
     {
       label: "XP",
       value: xp,
+    },
+
+    {
+      label: "Combo",
+      value: `${combo.toFixed(1)}x`,
     },
   ];
 
