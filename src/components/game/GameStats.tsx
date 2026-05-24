@@ -5,6 +5,10 @@ import { useGameStore } from "@/store/gameStore";
 export function GameStats() {
   const coins = useGameStore((state) => state.coins);
 
+  const xp = useGameStore((state) => state.xp);
+
+  const level = useGameStore((state) => state.level);
+
   const stats = [
     {
       label: "Coins",
@@ -12,13 +16,13 @@ export function GameStats() {
     },
 
     {
-      label: "Power",
-      value: "x1",
+      label: "Level",
+      value: level,
     },
 
     {
       label: "XP",
-      value: "0",
+      value: xp,
     },
   ];
 
