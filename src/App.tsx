@@ -6,18 +6,25 @@ import { CoinButton } from "@/components/game/CoinButton";
 import { GameHeader } from "@/components/game/GameHeader";
 import { GameStats } from "@/components/game/GameStats.tsx";
 import { XPBar } from "@/components/game/XPBar";
+import { ShopScreen } from "@/components/shop/ShopScreen";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<AppTab>("home");
   return (
     <AppLayout>
-      <GameHeader />
+      {activeTab === "home" && (
+        <>
+          <GameHeader />
 
-      <GameStats />
+          <GameStats />
 
-      <XPBar />
+          <XPBar />
 
-      <CoinButton />
+          <CoinButton />
+        </>
+      )}
+
+      {activeTab === "shop" && <ShopScreen />}
 
       <BottomNavigation activeTab={activeTab} onChangeTab={setActiveTab} />
     </AppLayout>
