@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { GAME_CONFIG } from "@/config/game.ts";
 
 interface GameState {
   coins: number;
@@ -11,14 +12,22 @@ interface GameState {
 
   clickPower: number;
 
+  passiveIncome: number;
+
+  lastActiveAt: number;
+
   tapCoin: () => void;
 
   buyUpgrade: () => void;
+
+  addPassiveCoins: () => void;
+
+  buyMiner: () => void;
 }
 
-const XP_PER_CLICK = 10;
+const XP_PER_CLICK = GAME_CONFIG.xpPerClick;
 
-const XP_TO_LEVEL = 100;
+const XP_TO_LEVEL = GAME_CONFIG.xpToLevel;
 
 export const useGameStore = create<GameState>((set) => ({
   coins: 0,
@@ -30,6 +39,10 @@ export const useGameStore = create<GameState>((set) => ({
   combo: 1,
 
   clickPower: 1,
+
+  passiveIncome: 0,
+
+  lastActiveAt: Date.now(),
 
   tapCoin: () =>
     set((state) => {
@@ -52,7 +65,7 @@ export const useGameStore = create<GameState>((set) => ({
 
   buyUpgrade: () =>
     set((state) => {
-      const UPGRADE_COST = 50;
+      const UPGRADE_COST = GAME_CONFIG.upgradeCost;
 
       if (state.coins < UPGRADE_COST) {
         return state;
@@ -62,6 +75,24 @@ export const useGameStore = create<GameState>((set) => ({
         coins: state.coins - UPGRADE_COST,
 
         clickPower: state.clickPower + 1,
+      };
+    }),
+
+  addPassiveCoins: () =>
+    set((state) => ({
+      coins: state.coins + state.passiveIncome,
+    })),
+
+  buyMiner: () =>
+    set((state) => {
+      if (state.coins < GAME_CONFIG.minerCost) {
+        return state;
+      }
+
+      return {
+        coins: state.coins - GAME_CONFIG.minerCost,
+
+        passiveIncome: state.passiveIncome + 1,
       };
     }),
 }));

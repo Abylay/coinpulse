@@ -11,6 +11,10 @@ export function ShopScreen() {
 
   const buyUpgrade = useGameStore((state) => state.buyUpgrade);
 
+  const passiveIncome = useGameStore((state) => state.passiveIncome);
+
+  const buyMiner = useGameStore((state) => state.buyMiner);
+
   const canBuy = coins >= UPGRADE_COST;
 
   return (
@@ -66,6 +70,8 @@ export function ShopScreen() {
               ⚡ Power Tap
             </h3>
           </div>
+
+          <button onClick={buyMiner}>Buy Miner</button>
 
           <div
             className="
