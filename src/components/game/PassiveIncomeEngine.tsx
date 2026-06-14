@@ -1,4 +1,4 @@
-import { useGameStore } from "@/store/gameStore.ts";
+import { useGameStore } from "@/store/gameStore";
 import { useEffect } from "react";
 
 export function PassiveIncomeEngine() {

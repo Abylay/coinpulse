@@ -22,14 +22,13 @@ export default function App() {
           <XPBar />
 
           <CoinButton />
-
-          <PassiveIncomeEngine />
         </>
       )}
 
       {activeTab === "shop" && <ShopScreen />}
 
       <BottomNavigation activeTab={activeTab} onChangeTab={setActiveTab} />
+      <PassiveIncomeEngine />
     </AppLayout>
   );
 }

@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { GAME_CONFIG } from "@/config/game.ts";
+import { GAME_CONFIG } from "@/config/game";
 
 interface GameState {
   coins: number;

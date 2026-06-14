@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 
 import { useGameStore } from "@/store/gameStore";
+import { GAME_CONFIG } from "@/config/game";
 
-const UPGRADE_COST = 50;
+const UPGRADE_COST = GAME_CONFIG.upgradeCost;
 
 export function ShopScreen() {
   const coins = useGameStore((state) => state.coins);
@@ -71,7 +72,53 @@ export function ShopScreen() {
             </h3>
           </div>
 
-          <button onClick={buyMiner}>Buy Miner</button>
+          <div
+            className="
+    mt-4
+    rounded-3xl
+    border
+    border-slate-800
+    bg-slate-900/60
+    p-5
+    backdrop-blur-xl
+  "
+          >
+            <div className="mb-4 flex items-start justify-between">
+              <div>
+                <p className="mb-1 text-sm text-slate-400">Passive Income</p>
+
+                <h3 className="text-2xl font-bold">⛏ Miner</h3>
+              </div>
+
+              <div
+                className="
+        rounded-2xl
+        bg-slate-800
+        px-3
+        py-1
+        text-sm
+      "
+              >
+                +{passiveIncome}/s
+              </div>
+            </div>
+
+            <p className="mb-6 text-slate-400">Generate coins automatically.</p>
+
+            <button
+              onClick={buyMiner}
+              className="
+               w-full
+               rounded-2xl
+              bg-cyan-400
+               py-3
+              font-semibold
+              text-black
+    "
+            >
+              Buy Miner — {GAME_CONFIG.minerCost} 🪙
+            </button>
+          </div>
 
           <div
             className="
