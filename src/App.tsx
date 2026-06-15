@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BottomNavigation } from "@/components/layout/BottomNavigation";
 import type { AppTab } from "@/types/navigation";
 import { AppLayout } from "@/components/layout/AppLayout";
@@ -8,9 +8,19 @@ import { GameStats } from "@/components/game/GameStats.tsx";
 import { XPBar } from "@/components/game/XPBar";
 import { ShopScreen } from "@/components/shop/ShopScreen";
 import { PassiveIncomeEngine } from "@/components/game/PassiveIncomeEngine";
+import { useGameStore } from "@/store/gameStore";
+import { ActivityTracker } from "@/components/game/ActivityTracker";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<AppTab>("home");
+  const applyOfflineProgress = useGameStore(
+    (state) => state.applyOfflineProgress,
+  );
+
+  useEffect(() => {
+    applyOfflineProgress();
+  }, [applyOfflineProgress]);
+
   return (
     <AppLayout>
       {activeTab === "home" && (
@@ -29,6 +39,7 @@ export default function App() {
 
       <BottomNavigation activeTab={activeTab} onChangeTab={setActiveTab} />
       <PassiveIncomeEngine />
+      <ActivityTracker />
     </AppLayout>
   );
 }
