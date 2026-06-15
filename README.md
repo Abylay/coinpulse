@@ -2,6 +2,10 @@
 
 Premium Telegram Mini App Clicker built with React, TypeScript and Tailwind CSS.
 
+🌐 Live Demo
+
+https://coinpulse-d3ym.vercel.app/
+
 ## 🚀 Tech Stack
 
 * React
