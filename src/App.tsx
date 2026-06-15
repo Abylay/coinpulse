@@ -10,6 +10,7 @@ import { ShopScreen } from "@/components/shop/ShopScreen";
 import { PassiveIncomeEngine } from "@/components/game/PassiveIncomeEngine";
 import { useGameStore } from "@/store/gameStore";
 import { ActivityTracker } from "@/components/game/ActivityTracker";
+import { WelcomeBack } from "@/components/game/WelcomeBack";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<AppTab>("home");
@@ -23,6 +24,7 @@ export default function App() {
 
   return (
     <AppLayout>
+      <WelcomeBack />
       {activeTab === "home" && (
         <>
           <GameHeader />

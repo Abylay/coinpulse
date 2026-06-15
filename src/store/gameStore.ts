@@ -18,6 +18,8 @@ interface GameState {
 
   lastActiveAt: number;
 
+  offlineCoins: number;
+
   tapCoin: () => void;
 
   buyUpgrade: () => void;
@@ -29,6 +31,8 @@ interface GameState {
   updateLastActiveAt: () => void;
 
   applyOfflineProgress: () => void;
+
+  clearOfflineCoins: () => void;
 }
 
 const XP_PER_CLICK = GAME_CONFIG.xpPerClick;
@@ -49,6 +53,8 @@ export const useGameStore = create<GameState>()(
       clickPower: 1,
 
       passiveIncome: 0,
+
+      offlineCoins: 0,
 
       lastActiveAt: Date.now(),
 
@@ -118,8 +124,15 @@ export const useGameStore = create<GameState>()(
           return {
             coins: state.coins + offlineCoins,
 
+            offlineCoins,
+
             lastActiveAt: now,
           };
+        }),
+
+      clearOfflineCoins: () =>
+        set({
+          offlineCoins: 0,
         }),
     }),
     {
