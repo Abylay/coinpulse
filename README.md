@@ -2,30 +2,25 @@
 
 Premium Telegram Mini App Clicker built with React, TypeScript and Tailwind CSS.
 
----
-
 ## 🚀 Tech Stack
 
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- Framer Motion
-- Zustand
-- Telegram Web Apps API
-
----
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* Framer Motion
+* Zustand
 
 ## ✨ Features
 
-- Animated clicker
-- Telegram Mini App integration
-- XP & level system
-- Daily rewards
-- Premium UI/UX
-- Smooth animations
-
----
+* Animated coin clicker
+* XP & level progression
+* Combo system
+* Upgrade shop
+* Passive income miners
+* Offline rewards
+* Persistent game progress
+* Smooth UI animations
 
 ## 📦 Installation
 
@@ -34,14 +29,13 @@ npm install
 npm run dev
 ```
 
----
+## 🏗 Project Status
 
-## 🌍 Telegram Mini App
+Completed MVP version.
 
-Designed for Telegram Web Apps ecosystem.
+Future improvements:
 
----
-
-## 🏗 Status
-
-🚧 In active development
+* Telegram SDK integration
+* Achievements
+* Profile system
+* Cloud save
